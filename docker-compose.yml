@@ -1,0 +1,8 @@
+version: '3'
+services:
+  myapp:
+    image: adcp_docker 
+    volumes:
+      - /home/simon/orbit/adcpDocker/ADCP_tutorial_data/3Q47/:/data
+    command: sh -c "prepare_ligand -l /data/3Q47_pepH.pdb"
+
