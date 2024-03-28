@@ -380,9 +380,13 @@ f.close()
 
 #license part:
 
+# Edited by adcp_docker. This will default to an academic installation, by answering 'Y' automatically as the user prompt 
+# during installation pauses the dockerbuild. Bear in mind that you will still need a licence to run the MSMS software if neccessary
+
 if not noLicense:
     text = """\nThe molecular surface calculation software (MSMS) is freely available for academic research.\nFor obtainig commercial license usage contact Dr. Sanner at sanner@scripps.edu.\n ACADEMIC INSTALLATION (Y/N) ?"""
-    ans = 'Y'
+    print "Added by adcp_docker: Defaulting to Academic installation"
+	ans = 'Y'
     if ans=='':
         ans = 'Y'
     while ans[0] not in ['y', 'Y', 'n', 'N']:
