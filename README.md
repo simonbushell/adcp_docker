@@ -28,7 +28,7 @@ docker-compose run --service-ports myapp bash
 ```
 
 ### Building 
-If you wish to build your own copy of this container, run the following in the same directory as the Dockerfile. This directory will also need to contain a zip copy of the tutorial files ([ADCP_tutorial_data.zip](https://ccsb.scripps.edu/adcp/download/1063/)), and the ```tmpinstall.dat``` file, to build properly.
+If you wish to build your own copy of this container, run the following in the same directory as the Dockerfile. This directory will also need to contain a zip copy of the tutorial files ([ADCP_tutorial_data.zip](https://ccsb.scripps.edu/adcp/download/1063/)), and the ```tmpinstall.dat``` file, to build properly. You will also need a copy of the [Linux ADFR tarbell](https://ccsb.scripps.edu/adfr/download/1038/)
 ```
 docker build -t your-image-name .
 ```
