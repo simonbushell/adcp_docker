@@ -4,10 +4,21 @@
 
 The container itself can be pulled from Dockerhub at [https://hub.docker.com/r/simonbushell/adcp_docker](https://hub.docker.com/r/simonbushell/adcp_docker)
 
-This container can be run interactively using data files on mounted volumes. To mount the current directory and run the container (Mac OS and *nix systems):
+This container can be run interactively using data files on mounted volumes. To mount the current directory and run the container:
 
+**Mac OS and \*nix systems**
 ```
 docker run -it -v $(PWD):/data simonbushell/adcp_docker:v1.0 bash
+```
+
+**Windows Powershell**
+```
+docker run -it -v ${PWD}:/data simonbushell/adcp_docker:v1.0 bash
+```
+
+**Windows Cmd.exe**
+```
+docker run -it -v %cd%:/data simonbushell/adcp_docker:v1.0 bash
 ```
 This will open up an interactive bash shell within the container with your current directory mounted at /data. The container also contains the [ADCP tutorial files](https://ccsb.scripps.edu/adcp/download/1063/) at ```/ADCP_tutorial_data```
 
@@ -21,4 +32,4 @@ If you wish to build your own copy of this container, run the following in the s
 ```
 docker build -t your-image-name .
 ```
-```tmpinstall.dat``` is a modified form of the install.py file for ADFR. It removes the prompt where it asks whether it asks the user to choose between the ACADEMIC or COMMERCIAL version of ADFR (some components of ADFR require a licence for commerical use). This prompt causes issues duing the container build process, and so will install the **academic** version (which contains the MSMS component for molecular surface calculation) as default. Please ensure you obtain a licence if you are using in a commercial setting. 
+```tmpinstall.dat``` is a modified form of the ```install.py``` file for ADFR. It removes the prompt where it asks whether it asks the user to choose between the academic or commercial version of ADFR (some components of ADFR require a licence for commerical use). This prompt can cause issues duing the container build process and so this modified file will install the **academic** version (which contains the MSMS component for molecular surface calculation) as default. Please ensure you obtain a licence if you are using in a commercial setting. 
