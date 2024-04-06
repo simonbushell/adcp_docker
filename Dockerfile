@@ -1,6 +1,5 @@
 FROM alpine:3.15
 
-# Install necessary packages
 RUN apk add --no-cache \
     tar \
     vim \
@@ -13,30 +12,25 @@ RUN apk add --no-cache \
     gzip \
     gcompat \
     python2 \
+    wget \
     bash
 
 WORKDIR /tmp
 
-# Add your tar file to the container
-ADD ADFRsuite_x86_64Linux_1.0.tar.gz /tmp/
-ADD tmpinstall.dat /tmp
-ADD ADCP_tutorial_data.zip /tmp
+# ADD ADFRsuite_x86_64Linux_1.0.tar.gz /tmp/ 
+# TODO: Move all these files to subdirectory
+RUN wget https://ccsb.scripps.edu/adfr/download/1038/ -O /tmp/ADFRsuite_x86_64Linux_1.0.tar.gz 
+RUN tar -xzvf /tmp/ADFRsuite_x86_64Linux_1.0.tar.gz
+RUN wget https://raw.githubusercontent.com/simonbushell/adcp_docker/main/tmpinstall.dat
+RUN wget https://ccsb.scripps.edu/adcp/download/1063/ -O /tmp/ADCP_tutorial_data.zip
 RUN unzip /tmp/ADCP_tutorial_data.zip -d /
 
 RUN mv tmpinstall.dat /tmp/ADFRsuite_x86_64Linux_1.0/Tools/install.py
 
-
-
-# Create directory where the software will be installed
 RUN mkdir -p /adcp/
 
-#Extract the tar file
-#RUN tar -xzvf ./ADFRsuite_x86_64Linux_1.0.tar.gz
-
-# Assuming the directory created by tar extraction is named ADFRsuite_x86_64Linux_1.0
-# Adjust if the actual directory name differs
 WORKDIR /tmp/ADFRsuite_x86_64Linux_1.0
-ADD ./ADFRsuite_x86_64Linux_1.0/install.sh /tmp/ADFRsuite_x86_64Linux_1.0
+ADD install.sh /tmp/ADFRsuite_x86_64Linux_1.0
 
 # Make sure install.sh is executable
 RUN chmod +x install.sh
