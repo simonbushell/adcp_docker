@@ -1,24 +1,24 @@
-# ADCP Docker
+# ADFR Docker
 ### Introduction
-[Autodock Crankpep (ADCP)](https://ccsb.scripps.edu/adcp/) is an *in silico* peptide docking engine for the popular [Autodock](https://autodock.scripps.edu/) suite. ADCP is somewhat deprecated and difficult to install on modern systems, not least because it isn't Python 3 compatible, but remains a very useful, open and scalable tool for *in silico* peptide screening. This repository contains the necessary files that I used to build a Docker container which contains a fully working implementation of ADCP.
+[Autodock Crankpep (ADCP)](https://ccsb.scripps.edu/adcp/) is an *in silico* peptide docking engine for the popular [AutodockFR](https://autodock.scripps.edu/) suite. ADFR is somewhat deprecated and difficult to install on modern systems, not least because it isn't Python 3 compatible, but remains a very useful, open and scalable tool for *in silico* peptide screening. This repository contains the necessary files that I used to build a Docker container which contains a fully working implementation of ADFR.
 
-The container itself can be pulled from Dockerhub at [https://hub.docker.com/r/simonbushell/adcp_docker](https://hub.docker.com/r/simonbushell/adcp_docker)
+The container itself can be pulled from Dockerhub at [https://hub.docker.com/r/simonbushell/adfr_docker](https://hub.docker.com/r/simonbushell/adfr_docker)
 
 This container can be run interactively using data files on mounted volumes. To mount the current directory and run the container:
 
 **Mac OS and \*nix systems**
 ```
-docker run -it -v $(PWD):/data simonbushell/adcp_docker:v1.0 bash
+docker run -it -v $(PWD):/data simonbushell/adfr_docker:v1.0 bash
 ```
 
 **Windows Powershell**
 ```
-docker run -it -v ${PWD}:/data simonbushell/adcp_docker:v1.0 bash
+docker run -it -v ${PWD}:/data simonbushell/adfr_docker:v1.0 bash
 ```
 
 **Windows Cmd.exe**
 ```
-docker run -it -v %cd%:/data simonbushell/adcp_docker:v1.0 bash
+docker run -it -v %cd%:/data simonbushell/adfr_docker:v1.0 bash
 ```
 This will open up an interactive bash shell within the container with your current directory mounted at /data. The container also contains the [ADCP tutorial files](https://ccsb.scripps.edu/adcp/download/1063/) at ```/ADCP_tutorial_data```
 
